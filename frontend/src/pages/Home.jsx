@@ -5,11 +5,11 @@ import Services from "../components/Services";
 import Work from "../components/Work";
 import Contact from "../components/Contact";
 import { Toaster } from "react-hot-toast";
-import Footer from "../components/footer";
+import Footer from "../components/Footer";
 import { useAppContext } from "../context/AppContext";
 
 const Home = () => {
-  const { themeValue} = useAppContext();
+  const { themeValue } = useAppContext();
 
   return (
     <>
