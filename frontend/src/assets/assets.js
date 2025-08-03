@@ -87,21 +87,25 @@ export const projectsData = [
     title: "Green Cart app",
     description: "Full Stack",
     bgImage: `${grocery_web_bg}`,
+    link: "https://greencart.webinfloo.com",
   },
   {
     title: "Background Removal",
     description: "Web App",
     bgImage: `${bgremoval_web_bg}`,
+    link: "https://bgremoval.webinfloo.com",
   },
   {
-    title: "Photography site",
-    description: "Web Design",
+    title: "Else Ai",
+    description: "AI Chat Companion",
     bgImage: "/work-3.png",
+    link: "https://elseai.webinfloo.com/",
   },
   {
     title: "UI/UX designing",
     description: "UI/UX Design",
     bgImage: "/work-4.png",
+    link: "",
   },
 ];
 

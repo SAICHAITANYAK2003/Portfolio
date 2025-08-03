@@ -25,8 +25,11 @@ const Services = () => {
             >
               <img src={icon} alt={title} className="w-12" />
               <h2 className="mt-6 text-2xl">{title}</h2>
-              <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">{description}</p>
+              <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
+                {description}
+              </p>
               <a
+                target="_blank"
                 href={link}
                 className="flex items-center gap-2 mt-4 text-sm text-gray-600 hover:underline group dark:text-gray-300"
               >

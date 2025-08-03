@@ -1,9 +1,14 @@
-import React from "react";
 import { projectsData } from "../assets/assets";
 import { RiSendPlaneLine } from "react-icons/ri";
 import { GoArrowRight } from "react-icons/go";
+import toast from "react-hot-toast";
 
 const Work = () => {
+  const handleWork = () => {
+    toast("🚧 Under Development 🚧", {
+      duration: 6000,
+    });
+  };
   return (
     <>
       <div id="work" className="py-10 px-[10%] w-full   scroll-mt-20">
@@ -14,7 +19,7 @@ const Work = () => {
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-10  mt-10">
-          {projectsData.map(({ title, description, bgImage }, index) => (
+          {projectsData.map(({ title, description, bgImage, link }, index) => (
             <div
               key={index}
               className="p-4 font-secondary bg-center bg-no-repeat bg-cover rounded-lg w-[90%] md:w-full aspect-square relative hover:scale-105 transition-all duration-500"
@@ -26,17 +31,21 @@ const Work = () => {
                   <p className="text-gray-500">{description}</p>
                 </div>
 
-                <button className="p-3 rounded-full border cursor-pointer hover:bg-show hover:-translate-y-1 hover:translate-x-1 transition duration-300 hover:shadow-[-3px_2px_0px_black]">
+                <a
+                  href={link}
+                  target="_blank"
+                  className="p-3 rounded-full border cursor-pointer hover:bg-show hover:-translate-y-1 hover:translate-x-1 transition duration-300 hover:shadow-[-3px_2px_0px_black]"
+                >
                   {" "}
                   <RiSendPlaneLine />
-                </button>
+                </a>
               </div>
             </div>
           ))}
         </div>
         <div className="w-full  flex items-center justify-center ">
           <a
-            href="#"
+            onClick={handleWork}
             className="px-4 py-2.5 rounded-full border border-gray-500 font-secondary text-gray-500 mt-10 flex items-center justify-center gap-4 hover:scale-105 transition-all duration-500 group dark:border-2 dark:text-gray-300"
           >
             show more{" "}
