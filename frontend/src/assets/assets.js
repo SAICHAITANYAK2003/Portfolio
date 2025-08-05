@@ -96,10 +96,10 @@ export const projectsData = [
     link: "https://bgremoval.webinfloo.com",
   },
   {
-    title: "Else Ai",
-    description: "AI Chat Companion",
+    title: "Ai Nest",
+    description: "AI Tools App",
     bgImage: "/work-3.png",
-    link: "https://elseai.webinfloo.com/",
+    link: "https://ainest.webinfloo.com/",
   },
   {
     title: "UI/UX designing",
