@@ -1,14 +1,29 @@
 import { GoArrowUpRight } from "react-icons/go";
 import { assets } from "../assets/assets";
-import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
+import {
+  IoMoonOutline,
+  IoSunnyOutline,
+  IoLogoWhatsapp,
+  IoMailOpenOutline,
+} from "react-icons/io5";
 import { useEffect, useRef, useState } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
+import { FaAngleRight } from "react-icons/fa6";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import { useAppContext } from "../context/AppContext";
 const Navbar = () => {
   const { themeValue, onHandleTheme } = useAppContext();
   const [isScroll, setIsScroll] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
   const showMenuOptions = useRef();
+
+  // What's app connection
+  const number = import.meta.env.VITE_WHATSAPP_NUMBER;
+  const message = import.meta.env.VITE_WHATSAPP_MESSAGE;
+
+  const encodedMessage = encodeURIComponent(message);
+
+  const whatsAppUrl = `https://wa.me/${number}?text=${encodedMessage}`;
 
   const openMenu = () => {
     showMenuOptions.current.style.transform = "translateX(-16rem)";
@@ -22,11 +37,13 @@ const Navbar = () => {
     window.addEventListener("scroll", () => {
       if (scrollY > 50) {
         setIsScroll(true);
+        setShowMenu(false)
       } else {
         setIsScroll(false);
       }
     });
   }, []);
+
   return (
     <>
       {/* Desktop View */}
@@ -84,9 +101,10 @@ const Navbar = () => {
         </ul>
 
         <div className="flex items-center gap-2.5 ">
+          {/* Theme Button */}
           <button
             onClick={() => onHandleTheme((prev) => !prev)}
-            className="cursor-pointer dark:text-white"
+            className="cursor-pointer dark:text-white mr-4"
           >
             {themeValue === "dark" ? (
               <IoSunnyOutline size={25} />
@@ -94,13 +112,52 @@ const Navbar = () => {
               <IoMoonOutline size={25} />
             )}
           </button>
-          <a
-            href="#contact"
-            className="lg:flex items-center space-x-4 hidden border border-gray-500 px-4 py-2 rounded-full ml-4 dark:text-white hover:scale-105 transition-all duration-500"
-          >
-            <span className="">Contact</span>
-            <GoArrowUpRight />
-          </a>
+         
+
+          <div className="relative z-50">
+            <div className="relative group">
+              <button
+                onClick={() => setShowMenu((prev) => !prev)}
+                className="flex items-center space-x-3.5 border  px-3 py-2 rounded-full cursor-pointer hover:scale-105 group transition-all duration-500 dark:border-white dark:text-white"
+              >
+                <span className="hidden lg:block">Contact</span>
+                <span className="group-hover:rotate-90  transition-all duration-500">
+                  <FaAngleRight />
+                </span>
+              </button>
+
+              {/* Email and What's app */}
+              {showMenu && (
+                <>
+                  <div
+                    onClick={(e) => e.stopPropagation()}
+                    className="absolute bg-white  border border-gray-300 rounded-xl px-4 py-3 top-full  -right-2 shadow-lg shadow-gray-200  dark:border-white dark:text-white dark:shadow-none dark:bg-black w-48 mt-2 z-50"
+                  >
+                    <a
+                      href="#contact"
+                      className="flex items-center space-x-3 hover:bg-gray-100/70 px-3 py-2 rounded-lg  dark:hover:bg-transparent hover:text-blue-500  "
+                    >
+                      <span>Email</span>
+                      <span>
+                        <IoMailOpenOutline size={20} />
+                      </span>
+                    </a>
+
+                    <a
+                      href={whatsAppUrl}
+                      target="_blank"
+                      className="flex items-center space-x-3 hover:bg-gray-100/70 px-3 py-2 rounded-lg  hover:text-green-500 dark:hover:bg-transparent "
+                    >
+                      <span>Whats app</span>
+                      <span>
+                        <IoLogoWhatsapp size={20} />
+                      </span>
+                    </a>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
 
           {/* Mobile View */}
 
