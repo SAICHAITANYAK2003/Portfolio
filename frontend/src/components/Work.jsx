@@ -2,12 +2,12 @@ import { projectsData } from "../assets/assets";
 import { RiSendPlaneLine } from "react-icons/ri";
 import { GoArrowRight } from "react-icons/go";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Work = () => {
+  const navigate = useNavigate();
   const handleWork = () => {
-    toast("🚧 Under Development 🚧", {
-      duration: 6000,
-    });
+    navigate("/projects");
   };
   return (
     <>
@@ -46,7 +46,7 @@ const Work = () => {
         <div className="w-full  flex items-center justify-center ">
           <a
             onClick={handleWork}
-            className="px-4 py-2.5 rounded-full border border-gray-500 font-secondary text-gray-500 mt-10 flex items-center justify-center gap-4 hover:scale-105 transition-all duration-500 group dark:border-2 dark:text-gray-300"
+            className="px-4 py-2.5 rounded-full border border-gray-500 font-secondary text-gray-500 mt-10 flex items-center justify-center gap-4 hover:scale-105 transition-all duration-500 group dark:border-2 dark:text-gray-300 cursor-pointer"
           >
             show more{" "}
             <GoArrowRight className="group-hover:translate-x-2 transition-all duration-500" />

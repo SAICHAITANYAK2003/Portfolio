@@ -1,6 +1,7 @@
 import React from "react";
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
+import { IoLogoWhatsapp } from "react-icons/io5";
 
 import { assets } from "../assets/assets";
 import { useAppContext } from "../context/AppContext";
@@ -10,7 +11,7 @@ const githubUrl = "https://github.com/SAICHAITANYAK2003";
 const gmail = "k.saichaitanya222@gmail.com";
 
 const Footer = () => {
-  const { themeValue } = useAppContext();
+  const { themeValue, whatsAppUrl } = useAppContext();
   return (
     <>
       <div className="w-full  py-15  ">
@@ -34,6 +35,15 @@ const Footer = () => {
           >
             <FaLinkedin size={40} />
             <span className="max-sm:hidden ml-3.5">LinkedIn</span>
+          </a>
+          <a
+            href={whatsAppUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-green-500 cursor-pointer flex items-center   text-center bg-white border border-gray-300 px-4 py-2 rounded-full hover:shadow-lg hover:shadow-gray-200 dark:hover:shadow-none"
+          >
+            <IoLogoWhatsapp size={40} />
+            <span className="max-sm:hidden ml-3.5">What's App</span>
           </a>
         </div>
 
