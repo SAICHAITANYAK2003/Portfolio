@@ -1,7 +1,6 @@
 import { projectsData } from "../assets/assets";
 import { RiSendPlaneLine } from "react-icons/ri";
 import { GoArrowRight } from "react-icons/go";
-import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const Work = () => {

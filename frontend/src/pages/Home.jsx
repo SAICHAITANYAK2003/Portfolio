@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <>
       <Toaster position="top-center" reverseOrder={false} />
-      <div className={` ${themeValue === "dark" ? "dark" : ""} dark:bg-black`}>
+      <div >
         <Navbar />
         <Header />
         <Aboutme />

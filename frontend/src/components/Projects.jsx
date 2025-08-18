@@ -4,7 +4,11 @@ import {
   IoLogoCss3,
   IoLogoReact,
   IoLogoJavascript,
+  IoSettingsOutline,
+  IoSunnyOutline,
+  IoMoonOutline,
 } from "react-icons/io5";
+import { IoIosRemoveCircleOutline } from "react-icons/io";
 import { FaCubesStacked } from "react-icons/fa6";
 import { LuSquareArrowOutUpRight } from "react-icons/lu";
 import { BsCodeSlash } from "react-icons/bs";
@@ -15,15 +19,15 @@ import { useState } from "react";
 
 const Projects = () => {
   const navigate = useNavigate();
-  const { projectsData } = useAppContext();
-
+  const { projectsData, themeValue, onHandleTheme } = useAppContext();
+  const [projectsOptions, setProjectOptions] = useState(false);
   const [selectLang, setSelectLang] = useState("fullstack");
 
   const filteredProjects = projectsData[selectLang] || [];
 
   return (
     <>
-      <div className="h-screen px-5  md:px-20 py-7">
+      <div className="min-h-screen px-5  md:px-20 py-7 dark:bg-black">
         <div className="fixed top-0 right-0 -z-10 w-11/12 translate-y-[-80%]  ">
           <img
             src={assets.header_bg_color}
@@ -31,24 +35,60 @@ const Projects = () => {
             className="w-full "
           />
         </div>
-        <div className="flex items-center gap-4">
-          <button onClick={() => navigate("/")}>
-            <FaHandPointLeft
-              size={30}
-              className="hover:-translate-x-2 transition-all duration-500 cursor-pointer"
-            />
+        <div className="flex items-center  justify-between dark:text-white relative">
+          <div className="flex items-center gap-4">
+            <button onClick={() => navigate("/")}>
+              <FaHandPointLeft
+                size={30}
+                className="hover:-translate-x-2 transition-all duration-500 cursor-pointer"
+              />
+            </button>
+
+            <h1 className="text-2xl">Projects</h1>
+          </div>
+
+          <button
+            onClick={() => setProjectOptions((prev) => !prev)}
+            className="p-1.5 border-[1.5px] border-gray-300 rounded-full cursor-pointer ml-8 hover:rotate-180 transition-all duration-500"
+          >
+            <span>
+              {!projectsOptions ? (
+                <IoSettingsOutline size={25} />
+              ) : (
+                <IoIosRemoveCircleOutline size={25} />
+              )}
+            </span>
           </button>
 
-          <h1 className="text-2xl">Projects</h1>
+          {projectsOptions && (
+            <div
+              onClick={() => onHandleTheme((prev) => !prev)}
+              className={`absolute right-12 top-0 bg-white  rounded-full shadow-xl flex items-center justify-center border border-gray-300 `}
+            >
+              <ul>
+                <li className="cursor-pointer dark:text-black p-2">
+                  {themeValue === "dark" ? (
+                    <span>
+                      <IoSunnyOutline size={25} />
+                    </span>
+                  ) : (
+                    <span>
+                      <IoMoonOutline size={25} />
+                    </span>
+                  )}
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
 
-        <ul className="flex flex-wrap justify-center items-center mt-10 font-secondary gap-6">
+        <ul className="flex flex-wrap justify-center items-center   font-secondary gap-6 mt-7">
           <li
             onClick={() => setSelectLang("fullstack")}
             className={`flex items-center space-x-3 text-[15px] border-[1.5px] border-gray-300 px-3 rounded-full py-1 cursor-pointer ${
               selectLang === "fullstack"
-                ? "bg-black text-white border-none"
-                : null
+                ? "bg-black text-white border-none dark:bg-white dark:text-black"
+                : "dark:text-white"
             }`}
           >
             <p>Full Stack</p>
@@ -59,7 +99,9 @@ const Projects = () => {
           <li
             onClick={() => setSelectLang("react")}
             className={`flex items-center space-x-3 text-[15px] border-[1.5px] border-gray-300 px-3 rounded-full py-1 cursor-pointer ${
-              selectLang === "react" ? "bg-black text-white border-none" : ""
+              selectLang === "react"
+                ? "bg-black text-white border-none dark:bg-white dark:text-black"
+                : "dark:text-white"
             } `}
           >
             <p>React Js</p>
@@ -67,13 +109,12 @@ const Projects = () => {
               <IoLogoReact size={20} />
             </span>
           </li>
-
           <li
             onClick={() => setSelectLang("javascript")}
             className={`flex items-center space-x-3 text-[15px] border-[1.5px] border-gray-300 px-3 rounded-full py-1 cursor-pointer ${
               selectLang === "javascript"
-                ? "bg-black text-white border-none"
-                : ""
+                ? "bg-black text-white border-none dark:bg-white dark:text-black"
+                : "dark:text-white"
             }  `}
           >
             <p>Javascript</p>
@@ -81,11 +122,12 @@ const Projects = () => {
               <IoLogoJavascript size={20} />
             </span>
           </li>
-
           <li
             onClick={() => setSelectLang("htmlcss")}
             className={`flex items-center space-x-3 text-[15px] border-[1.5px] border-gray-300 px-3 rounded-full py-1 cursor-pointer ${
-              selectLang === "htmlcss" ? "bg-black text-white border-none" : ""
+              selectLang === "htmlcss"
+                ? "bg-black text-white border-none dark:bg-white dark:text-black"
+                : "dark:text-white"
             } `}
           >
             <span className="text-orange-700">
@@ -137,8 +179,8 @@ const Projects = () => {
             ))}
           </div>
         ) : (
-          <div className="flex items-center justify-center h-[80%]  mt-4">
-            <p>Projects will be added soon..</p>
+          <div className="flex items-center justify-center   mt-4 dark:text-white h-[70vh]">
+            <p className="">Full Stack Projects will be added soon..</p>
           </div>
         )}
       </div>
