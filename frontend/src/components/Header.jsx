@@ -4,7 +4,7 @@ import { BsDownload } from "react-icons/bs";
 import { motion } from "motion/react";
 
 const resumeLink =
-  "https://drive.google.com/file/d/1VRrakugMwDKTU8DVywrWq44XbOq1ajOZ/view?usp=sharing";
+  "https://drive.google.com/file/d/1p6ohFud6ekIF4_DwbPuwEJ9nsA-En0so/view?usp=sharing";
 
 const Header = () => {
   return (
